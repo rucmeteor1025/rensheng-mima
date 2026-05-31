@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@700;900&display=swap");
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --x-bg: #050401;
+  --x-ink: #fdf6e3;
+  --x-muted: rgba(253, 246, 227, 0.68);
+  --x-line: rgba(253, 246, 227, 0.14);
+  --x-amber: #ffb627;
+  --x-jade: #386641;
+  --x-red: #bc4749;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--x-bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--x-bg);
+  color: var(--x-ink);
+  font-family: "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(253, 246, 227, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(253, 246, 227, 0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+::selection {
+  background: var(--x-amber);
+  color: var(--x-bg);
+}
+
+.serif {
+  font-family: "Noto Serif SC", serif;
+}
+
+.mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.glass {
+  border: 1px solid var(--x-line);
+  background: rgba(253, 246, 227, 0.045);
+  backdrop-filter: blur(18px);
+}
+
+.section {
+  padding: 84px 20px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 120px 32px;
+  }
+}
+
+.container-x {
+  width: min(1180px, 100%);
+  margin-inline: auto;
+}
+
+.hover-invert {
+  transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hover-invert:hover {
+  background: var(--x-ink);
+  border-color: var(--x-ink);
+  color: var(--x-bg);
+  transform: translateY(-2px);
+}
+
+.card-radius {
+  border-radius: 16px;
+}
+
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 182, 39, 0.08),
+    transparent
+  );
+  transform: translateY(-100%);
+  animation: scanline 6s ease-in-out infinite;
+}
+
+@keyframes scanline {
+  0%, 54% { transform: translateY(-100%); }
+  74%, 100% { transform: translateY(100%); }
+}
+
+.safe-bottom {
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+}

@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Node
+web/frontend/node_modules/
+web/frontend/dist/
+web/frontend/.vite/
+web/frontend/*.tsbuildinfo
+
+# Local private records
+private_records/
+命理记录/
+*.private.*
+
+# Environment and OS
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Generated outputs
+reports/
+exports/
+*.log
+
