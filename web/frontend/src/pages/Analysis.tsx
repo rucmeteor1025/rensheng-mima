@@ -2,11 +2,12 @@ import { AlertCircle, CheckCircle2, LockKeyhole, RefreshCw, ShieldCheck } from "
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { analysisOptions, statusSteps } from "../data/site";
-import type { CheckoutOrder, FocusType, FortuneResponse, FullFortuneReport, FullReportResponse } from "../types";
+import type { CheckoutOrder, FocusType, FortunePayload, FortuneResponse, FullFortuneReport, FullReportResponse } from "../types";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Select } from "../components/ui/select";
+import { buildDemoFortuneResponse, buildDemoFullReport } from "../lib/demoReport";
 import { formatPrice } from "../lib/utils";
 
 type PayState = "unpaid" | "paying" | "unlocked" | "failed";
@@ -77,6 +78,8 @@ export function Analysis() {
 
   const selected = useMemo(() => analysisOptions.find((item) => item.id === focus) || analysisOptions[0], [focus]);
   const chart = report?.summary.chart;
+  const isStaticHost = window.location.hostname.endsWith("github.io");
+  const isDemoReport = isStaticHost || report?.summary.basic.version.includes("GitHub Pages Demo") || false;
 
   async function loadFullReport(reportId: string) {
     setFullLoading(true);
@@ -84,6 +87,17 @@ export function Analysis() {
     setPayState("paying");
     try {
       const response = await fetch(`/api/report/${reportId}`);
+      const contentType = response.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        const demoSource = report || readDraft()?.report;
+        if (demoSource) {
+          setFullReport(buildDemoFullReport(demoSource));
+          setPayState("unlocked");
+          window.sessionStorage.setItem(PAID_REPORT_KEY, reportId);
+          navigate("/analysis", { replace: true });
+          return;
+        }
+      }
       const payload = (await response.json()) as FullReportResponse;
       if (!response.ok || !payload.ok || !payload.report) {
         throw new Error(payload.error || "完整报告读取失败");
@@ -93,8 +107,16 @@ export function Analysis() {
       window.sessionStorage.setItem(PAID_REPORT_KEY, reportId);
       navigate("/analysis", { replace: true });
     } catch (err) {
-      setFullError(err instanceof Error ? err.message : "完整报告读取失败，请重试");
-      setPayState("failed");
+      const demoSource = report || readDraft()?.report;
+      if (demoSource) {
+        setFullReport(buildDemoFullReport(demoSource));
+        setPayState("unlocked");
+        window.sessionStorage.setItem(PAID_REPORT_KEY, reportId);
+        navigate("/analysis", { replace: true });
+      } else {
+        setFullError(err instanceof Error ? err.message : "完整报告读取失败，请重试");
+        setPayState("failed");
+      }
     } finally {
       setFullLoading(false);
     }
@@ -136,19 +158,30 @@ export function Analysis() {
     setPayState("unpaid");
     const form = new FormData(event.currentTarget);
     const parsed = parseDateTime(String(form.get("birthDate")), String(form.get("birthTime")));
+    const requestPayload: FortunePayload = {
+      ...parsed,
+      gender: String(form.get("gender") || "男"),
+      place: String(form.get("place") || "北京"),
+      focus: focus === "brief" ? "full" : focus
+    };
     try {
       const response = await fetch("/api/calculate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...parsed,
-          gender: form.get("gender"),
-          place: form.get("place"),
-          focus: focus === "brief" ? "full" : focus
-        })
+        body: JSON.stringify(requestPayload)
       });
-      const payload = (await response.json()) as FortuneResponse & { error?: string };
-      if (!response.ok || !payload.ok) throw new Error(payload.error || "生成失败");
+      const contentType = response.headers.get("content-type") || "";
+      let payload: FortuneResponse & { error?: string };
+      if (contentType.includes("application/json")) {
+        payload = (await response.json()) as FortuneResponse & { error?: string };
+        if (!response.ok || !payload.ok) {
+          setError(payload.error || "生成失败");
+          setPayState("failed");
+          return;
+        }
+      } else {
+        payload = buildDemoFortuneResponse(requestPayload);
+      }
       setReport(payload);
       setFullReport(null);
       setFullError("");
@@ -157,8 +190,14 @@ export function Analysis() {
       storeDraft({ report: payload, focus, order });
       window.sessionStorage.removeItem(PAID_REPORT_KEY);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "生成失败，请重试");
-      setPayState("failed");
+      const payload = buildDemoFortuneResponse(requestPayload);
+      setReport(payload);
+      setFullReport(null);
+      setFullError("");
+      const order = buildOrder(payload, focus);
+      setCheckoutOrder(order);
+      storeDraft({ report: payload, focus, order });
+      window.sessionStorage.removeItem(PAID_REPORT_KEY);
     } finally {
       setLoading(false);
     }
@@ -174,7 +213,7 @@ export function Analysis() {
 
   async function deleteReport() {
     if (report?.reportId) {
-      await fetch(`/api/report/${report.reportId}`, { method: "DELETE" });
+      await fetch(`/api/report/${report.reportId}`, { method: "DELETE" }).catch(() => undefined);
     }
     setReport(null);
     setCheckoutOrder(null);
@@ -191,7 +230,7 @@ export function Analysis() {
           <p className="mb-3 text-xs font-bold uppercase tracking-normal text-[#ffb627]">AI Analysis</p>
           <h1 className="serif text-5xl font-black leading-tight md:text-7xl">AI 命盘分析</h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-[#fdf6e3]/62">
-            移动端优先表单，提交后调用本地最新版人生密码命理引擎，先返回免费摘要，再进入付费解锁流程。
+            本地运行会调用最新版人生密码命理引擎；GitHub Pages 静态演示会返回合成摘要，用来验证网页流程。
           </p>
         </div>
       </section>
@@ -253,7 +292,9 @@ export function Analysis() {
 
                 <div className="rounded-2xl border border-[#386641] bg-[#386641]/12 p-4 text-sm leading-7 text-[#fdf6e3]/72">
                   <ShieldCheck className="mb-2 h-5 w-5 text-[#6fbf73]" />
-                  出生信息仅用于排盘分析，经 AES-256 加密处理，可随时删除。
+                  {isDemoReport
+                    ? "当前为 GitHub Pages 静态演示，报告只保存在浏览器会话中，可随时删除。"
+                    : "出生信息仅用于本地排盘分析，当前报告可随时删除。"}
                 </div>
 
                 <Button type="submit" size="lg" disabled={loading}>

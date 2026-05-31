@@ -9,6 +9,7 @@
   <a href="https://github.com/rucmeteor1025/rensheng-mima/releases"><img alt="Release" src="https://img.shields.io/github/v/release/rucmeteor1025/rensheng-mima?include_prereleases&label=release" /></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-0f766e" /></a>
   <a href="PRIVACY.md"><img alt="Privacy first" src="https://img.shields.io/badge/privacy-no_real_case_records-7c2d12" /></a>
+  <a href="https://rucmeteor1025.github.io/rensheng-mima/"><img alt="GitHub Pages demo" src="https://img.shields.io/badge/demo-GitHub_Pages-24292f" /></a>
   <img alt="Local first" src="https://img.shields.io/badge/local--first-yes-2563eb" />
   <img alt="Python" src="https://img.shields.io/badge/python-3.12%2B-3776ab" />
 </p>
@@ -18,6 +19,10 @@ Local-first Chinese metaphysics computation toolkit and web MVP.
 人生密码是一个本地优先的中文命理结构化计算工具。它把八字、紫微斗数、文墨天机兼容文字盘解析、格局识别和融合报告拆成可测试的工程模块，并提供一个 React/Vite 与静态降级并存的本地网页入口。
 
 > This project is for cultural research, structured rule-engine experiments, and personal reflection. It is not medical, legal, financial, or psychological advice.
+
+Live static demo: <https://rucmeteor1025.github.io/rensheng-mima/>
+
+The GitHub Pages demo is a privacy-safe static frontend. It uses synthetic fallback summaries because GitHub Pages cannot run the Python rule engine. For real local computation, run `python3 web/server.py`.
 
 ## 项目亮点
 
@@ -46,6 +51,14 @@ python3 web/server.py
 ```
 
 Open `http://127.0.0.1:8765`.
+
+Run the frontend dev server:
+
+```bash
+cd web/frontend
+npm ci
+npm run dev
+```
 
 ## 产品预览
 
