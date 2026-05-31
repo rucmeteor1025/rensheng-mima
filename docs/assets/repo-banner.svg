@@ -1,0 +1,33 @@
+<svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">人生密码 / Rensheng Mima repository banner</title>
+  <desc id="desc">A local-first Chinese metaphysics computation toolkit with privacy-first engineering boundaries.</desc>
+  <rect width="1280" height="420" fill="#06100D"/>
+  <path d="M0 70H1280M0 140H1280M0 210H1280M0 280H1280M0 350H1280M110 0V420M220 0V420M330 0V420M440 0V420M550 0V420M660 0V420M770 0V420M880 0V420M990 0V420M1100 0V420M1210 0V420" stroke="#F8F4E8" stroke-opacity=".055"/>
+  <rect x="64" y="54" width="1152" height="312" rx="24" fill="#0A1714" stroke="#3D6656"/>
+  <circle cx="1002" cy="210" r="132" stroke="#FFC857" stroke-opacity=".72" stroke-width="2"/>
+  <circle cx="1002" cy="210" r="84" stroke="#F8F4E8" stroke-opacity=".16" stroke-width="2"/>
+  <circle cx="1002" cy="210" r="42" stroke="#7FBF84" stroke-opacity=".28" stroke-width="2"/>
+  <path d="M1002 78V342M870 210H1134M908 116L1096 304M1096 116L908 304" stroke="#F8F4E8" stroke-opacity=".12"/>
+  <rect x="942" y="64" width="120" height="42" rx="21" fill="#06100D" stroke="#FFC857"/>
+  <text x="1002" y="92" text-anchor="middle" font-family="Noto Serif SC, Songti SC, serif" font-size="22" fill="#FFC857">命宫</text>
+  <rect x="1102" y="189" width="96" height="42" rx="21" fill="#06100D" stroke="#315A4B"/>
+  <text x="1150" y="217" text-anchor="middle" font-family="Noto Sans SC, Arial, sans-serif" font-size="19" fill="#F8F4E8">事业</text>
+  <rect x="954" y="314" width="96" height="42" rx="21" fill="#06100D" stroke="#315A4B"/>
+  <text x="1002" y="342" text-anchor="middle" font-family="Noto Sans SC, Arial, sans-serif" font-size="19" fill="#F8F4E8">关系</text>
+  <rect x="806" y="189" width="96" height="42" rx="21" fill="#06100D" stroke="#315A4B"/>
+  <text x="854" y="217" text-anchor="middle" font-family="Noto Sans SC, Arial, sans-serif" font-size="19" fill="#F8F4E8">财运</text>
+  <text x="112" y="132" font-family="Noto Serif SC, Songti SC, serif" font-size="72" font-weight="700" fill="#F8F4E8">人生密码</text>
+  <text x="116" y="174" font-family="Menlo, Consolas, monospace" font-size="24" fill="#FFC857">Rensheng Mima</text>
+  <text x="116" y="222" font-family="Noto Sans SC, Arial, sans-serif" font-size="27" fill="#CFE9D8">Local-first rule engines for BaZi, Zi Wei, Wenmo parsing, and a privacy-preserving web MVP.</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="17" fill="#F8F4E8">
+    <rect x="116" y="274" width="132" height="36" rx="18" fill="#10231F" stroke="#3D6656"/>
+    <text x="132" y="298">rule-engine</text>
+    <rect x="264" y="274" width="112" height="36" rx="18" fill="#10231F" stroke="#3D6656"/>
+    <text x="280" y="298">web-mvp</text>
+    <rect x="392" y="274" width="146" height="36" rx="18" fill="#10231F" stroke="#3D6656"/>
+    <text x="408" y="298">privacy-first</text>
+    <rect x="554" y="274" width="178" height="36" rx="18" fill="#10231F" stroke="#3D6656"/>
+    <text x="570" y="298">synthetic-fixtures</text>
+  </g>
+  <text x="116" y="344" font-family="Noto Sans SC, Arial, sans-serif" font-size="19" fill="#B5CDBE">No real birth records, generated reports, logs, tokens, or private agent state are included.</text>
+</svg>

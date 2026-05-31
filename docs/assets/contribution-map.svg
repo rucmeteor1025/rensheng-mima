@@ -1,0 +1,62 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Rensheng Mima contribution map</title>
+  <desc id="desc">A contribution map showing privacy review, synthetic fixtures, rule engines, parser adapters, web MVP, documentation, and release automation.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L10 5L0 10V0Z" fill="#FFC857"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="640" fill="#06100D"/>
+  <path d="M0 80H1280M0 160H1280M0 240H1280M0 320H1280M0 400H1280M0 480H1280M0 560H1280M160 0V640M320 0V640M480 0V640M640 0V640M800 0V640M960 0V640M1120 0V640" stroke="#F8F4E8" stroke-opacity=".055"/>
+  <text x="64" y="72" font-family="Noto Serif SC, Songti SC, serif" font-size="48" font-weight="700" fill="#F8F4E8">Contribution Map</text>
+  <text x="64" y="110" font-family="Menlo, Consolas, monospace" font-size="18" fill="#B5CDBE">privacy gate -> reproducible tests -> documented local MVP</text>
+  <rect x="858" y="48" width="358" height="72" rx="18" fill="#2A1516" stroke="#BC4749"/>
+  <text x="882" y="79" font-family="Menlo, Consolas, monospace" font-size="17" fill="#FFC857">hard boundary</text>
+  <text x="882" y="104" font-family="Noto Sans SC, Arial, sans-serif" font-size="18" fill="#F8F4E8">No real case records in public GitHub.</text>
+
+  <g font-family="Noto Sans SC, Arial, sans-serif">
+    <rect x="64" y="176" width="262" height="118" rx="18" fill="#0A1714" stroke="#3D6656"/>
+    <text x="94" y="216" font-size="23" font-weight="700" fill="#FFC857">1. Synthetic Fixtures</text>
+    <text x="94" y="252" font-size="18" fill="#CFE9D8">Add non-user demo inputs</text>
+    <text x="94" y="278" font-size="18" fill="#CFE9D8">and expected snapshots.</text>
+
+    <rect x="394" y="176" width="262" height="118" rx="18" fill="#0A1714" stroke="#3D6656"/>
+    <text x="424" y="216" font-size="23" font-weight="700" fill="#FFC857">2. Parser Adapters</text>
+    <text x="424" y="252" font-size="18" fill="#CFE9D8">Normalize Wenmo-style</text>
+    <text x="424" y="278" font-size="18" fill="#CFE9D8">text into stable JSON.</text>
+
+    <rect x="724" y="176" width="262" height="118" rx="18" fill="#0A1714" stroke="#3D6656"/>
+    <text x="754" y="216" font-size="23" font-weight="700" fill="#FFC857">3. Rule Engines</text>
+    <text x="754" y="252" font-size="18" fill="#CFE9D8">BaZi, Zi Wei, patterns,</text>
+    <text x="754" y="278" font-size="18" fill="#CFE9D8">fusion and wording checks.</text>
+
+    <rect x="954" y="354" width="262" height="118" rx="18" fill="#0A1714" stroke="#3D6656"/>
+    <text x="984" y="394" font-size="23" font-weight="700" fill="#FFC857">4. Web MVP</text>
+    <text x="984" y="430" font-size="18" fill="#CFE9D8">Local API, summary view,</text>
+    <text x="984" y="456" font-size="18" fill="#CFE9D8">privacy page, deletion flow.</text>
+
+    <rect x="624" y="354" width="262" height="118" rx="18" fill="#0A1714" stroke="#3D6656"/>
+    <text x="654" y="394" font-size="23" font-weight="700" fill="#FFC857">5. Docs + Examples</text>
+    <text x="654" y="430" font-size="18" fill="#CFE9D8">README, screenshots,</text>
+    <text x="654" y="456" font-size="18" fill="#CFE9D8">quickstart, contribution notes.</text>
+
+    <rect x="294" y="354" width="262" height="118" rx="18" fill="#0A1714" stroke="#3D6656"/>
+    <text x="324" y="394" font-size="23" font-weight="700" fill="#FFC857">6. Release Automation</text>
+    <text x="324" y="430" font-size="18" fill="#CFE9D8">CI, release checklist,</text>
+    <text x="324" y="456" font-size="18" fill="#CFE9D8">issue templates.</text>
+
+    <rect x="64" y="354" width="164" height="118" rx="18" fill="#13241F" stroke="#7FBF84"/>
+    <text x="94" y="394" font-size="23" font-weight="700" fill="#7FBF84">Review</text>
+    <text x="94" y="430" font-size="18" fill="#CFE9D8">Privacy scan</text>
+    <text x="94" y="456" font-size="18" fill="#CFE9D8">before merge.</text>
+  </g>
+  <path d="M326 235H394" stroke="#FFC857" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M656 235H724" stroke="#FFC857" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M986 235C1100 238 1110 314 1088 354" stroke="#FFC857" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M954 413H886" stroke="#FFC857" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M624 413H556" stroke="#FFC857" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M294 413H228" stroke="#FFC857" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M146 354C138 308 150 290 176 294" stroke="#7FBF84" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="64" y="528" width="1152" height="64" rx="18" fill="#10231F" stroke="#3D6656"/>
+  <text x="92" y="568" font-family="Noto Sans SC, Arial, sans-serif" font-size="21" fill="#F8F4E8">Good first issues: synthetic fixtures, parser edge cases, wording safety, frontend polish, CI smoke tests, and documentation.</text>
+</svg>
