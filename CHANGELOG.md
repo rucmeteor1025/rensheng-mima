@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 - Synthetic fixtures + public parser regression
+
+- Added deterministic synthetic Wenmo chart fixtures (3 cases, no real user data)
+- Added `scripts/gen_synthetic_fixtures.py` generator with `--verify` re-parse check
+- Added `scripts/wenmo_synthetic_tests.py` regression suite wired into CI
+- Manifest now carries synthetic entries with parse expectations (birth, true solar time, four-hua stars)
+
 ## 0.1.0 - Local MVP
 
 - Added BaZi and Zi Wei computation entry point

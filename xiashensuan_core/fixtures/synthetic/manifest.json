@@ -1,0 +1,83 @@
+[
+  {
+    "id": "synthetic_19880620_0915_female",
+    "source": "synthetic",
+    "note": "Synthetic fixture A (deterministic demo input)",
+    "gender": "女",
+    "birth_raw": "1988-06-20 09:15",
+    "calendar": "公历",
+    "birth_standard_time": "1988-06-20 09:15",
+    "birth_date": "1988-06-20",
+    "birth_clock_time": "09:15",
+    "true_solar_standard_time": "1988-06-20 09:00",
+    "true_solar_date": "1988-06-20",
+    "true_solar_clock_time": "09:00",
+    "anxing_code": "C5FYC",
+    "expect": {
+      "ming_gong": "丑",
+      "shen_palace": "夫妻宫",
+      "lunar_date": "一九八八年五月初七",
+      "four_hua": [
+        "右弼",
+        "天机",
+        "太阴",
+        "贪狼"
+      ]
+    },
+    "file": "synthetic_19880620_0915_female.txt"
+  },
+  {
+    "id": "synthetic_20031102_2145_male",
+    "source": "synthetic",
+    "note": "Synthetic fixture B (deterministic demo input)",
+    "gender": "男",
+    "birth_raw": "2003-11-02 21:45",
+    "calendar": "公历",
+    "birth_standard_time": "2003-11-02 21:45",
+    "birth_date": "2003-11-02",
+    "birth_clock_time": "21:45",
+    "true_solar_standard_time": "2003-11-02 21:47",
+    "true_solar_date": "2003-11-02",
+    "true_solar_clock_time": "21:47",
+    "anxing_code": "C5FYC",
+    "expect": {
+      "ming_gong": "子",
+      "shen_palace": "夫妻宫",
+      "lunar_date": "二〇〇三年十月初九",
+      "four_hua": [
+        "太阴",
+        "巨门",
+        "破军",
+        "贪狼"
+      ]
+    },
+    "file": "synthetic_20031102_2145_male.txt"
+  },
+  {
+    "id": "synthetic_19760308_0630_female",
+    "source": "synthetic",
+    "note": "Synthetic fixture C (deterministic demo input)",
+    "gender": "女",
+    "birth_raw": "1976-03-08 06:30",
+    "calendar": "公历",
+    "birth_standard_time": "1976-03-08 06:30",
+    "birth_date": "1976-03-08",
+    "birth_clock_time": "06:30",
+    "true_solar_standard_time": "1976-03-08 06:05",
+    "true_solar_date": "1976-03-08",
+    "true_solar_clock_time": "06:05",
+    "anxing_code": "C5FYC",
+    "expect": {
+      "ming_gong": "子",
+      "shen_palace": "迁移宫",
+      "lunar_date": "一九七六年二月初八",
+      "four_hua": [
+        "天同",
+        "天机",
+        "廉贞",
+        "文昌"
+      ]
+    },
+    "file": "synthetic_19760308_0630_female.txt"
+  }
+]
