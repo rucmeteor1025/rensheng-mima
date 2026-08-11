@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/rucmeteor1025/rensheng-mima/schemas/fusion.schema.json",
+  "title": "Fusion judgment output contract",
+  "description": "Stable contract for the 融合判断 section of engine output. Versioned: breaking changes bump the version field; additive changes only.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["主轴", "紫微重点", "生活版引导", "融合引擎"],
+  "properties": {
+    "主轴": { "type": "string" },
+    "辅助标签": { "type": "string" },
+    "紫微重点": {
+      "type": "object",
+      "required": ["命宫", "夫妻宫", "财帛宫", "官禄宫", "福德宫", "迁移宫", "疾厄宫", "田宅宫", "父母宫"],
+      "properties": {
+        "命宫": { "type": "string" },
+        "夫妻宫": { "type": "string" },
+        "财帛宫": { "type": "string" },
+        "官禄宫": { "type": "string" },
+        "福德宫": { "type": "string" },
+        "迁移宫": { "type": "string" },
+        "疾厄宫": { "type": "string" },
+        "田宅宫": { "type": "string" },
+        "父母宫": { "type": "string" }
+      }
+    },
+    "生活版引导": {
+      "type": "object",
+      "required": ["整体句", "性格句", "展开句"],
+      "properties": {
+        "整体句": { "type": "string" },
+        "性格句": { "type": "string" },
+        "展开句": { "type": "string" }
+      }
+    },
+    "融合引擎": {
+      "type": "object",
+      "required": ["版本", "启用模块", "权重", "核心命理融合", "最终画像", "边界"],
+      "properties": {
+        "版本": { "type": "string" },
+        "启用模块": { "type": "array", "items": { "type": "string" } },
+        "权重": {
+          "type": "object",
+          "required": ["八字", "紫微斗数", "星座"],
+          "properties": {
+            "八字": { "type": "number" },
+            "紫微斗数": { "type": "number" },
+            "星座": { "type": "number" }
+          }
+        },
+        "核心命理融合": {
+          "type": "object",
+          "required": ["状态", "版本", "核心权重", "八字主轴", "紫微主轴", "融合结论", "置信说明"],
+          "properties": {
+            "状态": { "type": "string" },
+            "版本": { "type": "string" },
+            "核心权重": {
+              "type": "object",
+              "required": ["八字", "紫微斗数"],
+              "properties": {
+                "八字": { "type": "number" },
+                "紫微斗数": { "type": "number" }
+              }
+            },
+            "分工": { "type": "object" },
+            "八字主轴": { "type": "string" },
+            "紫微主轴": { "type": "string" },
+            "一致信号": { "type": "array", "items": { "type": "string" } },
+            "冲突解释": { "type": "array", "items": { "type": "string" } },
+            "专业边界": { "type": "array", "items": { "type": "string" } },
+            "融合结论": { "type": "string" },
+            "置信说明": { "type": "string" }
+          }
+        },
+        "人格补充": { "type": "object" },
+        "一致结论": { "type": "array", "items": { "type": "string" } },
+        "冲突解释": { "type": "array", "items": { "type": "string" } },
+        "最终画像": { "type": "string" },
+        "行动建议": {
+          "type": "object",
+          "required": ["事业", "感情", "状态"],
+          "properties": {
+            "事业": { "type": "string" },
+            "感情": { "type": "string" },
+            "状态": { "type": "string" }
+          }
+        },
+        "边界": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": true
+}

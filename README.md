@@ -27,6 +27,7 @@ The GitHub Pages demo is a privacy-safe static frontend. It uses synthetic fallb
 ## 项目亮点
 
 - **可测试的规则引擎**：八字、紫微斗数、格局检测、融合层和文墨兼容解析分别沉淀为可回归测试模块。
+- **版本化输出契约**：核心输出（八字/紫微/融合/网页摘要）提供 JSON Schema 契约（`xiashensuan_core/schemas/`），前端与下游集成可依赖 versioned contracts。
 - **本地优先隐私模型**：公开仓库不包含真实出生记录、姓名、生成报告、日志、token 或 agent state。
 - **可运行 Web MVP**：本地 API + 首页表单 + 免费摘要 + 价格页 + 隐私页 + 报告删除流程。
 - **开源协作友好**：CI、issue template、release checklist、贡献指南、隐私扫描脚本和路线图都已放在仓库内。
@@ -104,6 +105,7 @@ After building, restart `python3 web/server.py`; the server will serve `web/fron
 ```bash
 python3 -B scripts/ziweiwenmotests.py
 python3 -B scripts/wenmo_synthetic_tests.py
+python3 -B scripts/schema_contract_tests.py
 python3 -B scripts/xiashensuantests.py
 python3 -B scripts/ziwei_patterns_tests.py
 python3 -B scripts/wenmo_text_scan.py --record-dir private_records
@@ -155,7 +157,7 @@ Excluded:
 
 - [x] Add synthetic public fixtures that do not come from real users.
 - [ ] Split the engine into a proper Python package.
-- [ ] Add typed JSON schema for chart outputs.
+- [x] Add typed JSON schema for chart outputs.
 - [ ] Add GitHub Pages demo screenshots or static preview.
 - [ ] Add CI coverage for backend smoke tests and frontend preview checks.
 - [ ] Add privacy review checklist for contribution review.

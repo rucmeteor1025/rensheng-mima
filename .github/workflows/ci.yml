@@ -16,6 +16,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python -B scripts/ziweiwenmotests.py
       - run: python -B scripts/wenmo_synthetic_tests.py
+      - run: python -B scripts/schema_contract_tests.py
       - run: python -B scripts/xiashensuantests.py
       - run: python -B scripts/ziwei_patterns_tests.py
       - run: python -B scripts/wenmo_text_scan.py --record-dir private_records

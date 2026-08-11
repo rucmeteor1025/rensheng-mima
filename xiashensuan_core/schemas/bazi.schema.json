@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/rucmeteor1025/rensheng-mima/schemas/bazi.schema.json",
+  "title": "BaZi output contract",
+  "description": "Stable contract for the 八字命理 section of engine output. Versioned: breaking changes bump the version field; additive changes only.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["八字", "四柱", "日主", "五行分布", "性格", "农历", "出生时间", "真太阳时", "性别", "简批", "大运骨架", "流年骨架"],
+  "properties": {
+    "八字": { "type": "string" },
+    "四柱": {
+      "type": "object",
+      "required": ["年", "月", "日", "时"],
+      "properties": {
+        "年": { "type": "string" },
+        "月": { "type": "string" },
+        "日": { "type": "string" },
+        "时": { "type": "string" }
+      }
+    },
+    "日主": {
+      "type": "object",
+      "required": ["日主", "五行", "身强弱", "喜用神"],
+      "properties": {
+        "日主": { "type": "string" },
+        "五行": { "type": "string" },
+        "身强弱": { "type": "string" },
+        "喜用神": { "type": "string" }
+      }
+    },
+    "五行分布": {
+      "type": "object",
+      "required": ["木", "火", "土", "金", "水"],
+      "properties": {
+        "木": { "type": "integer" },
+        "火": { "type": "integer" },
+        "土": { "type": "integer" },
+        "金": { "type": "integer" },
+        "水": { "type": "integer" }
+      }
+    },
+    "性格": { "type": "string" },
+    "农历": { "type": "string" },
+    "出生时间": { "type": "string" },
+    "真太阳时": { "type": "string" },
+    "时间校正": {
+      "type": "object",
+      "required": ["经度", "经度修正分钟", "时差方程分钟", "总校正分钟"],
+      "properties": {
+        "经度": { "type": "number" },
+        "经度修正分钟": { "type": "integer" },
+        "时差方程分钟": { "type": "integer" },
+        "总校正分钟": { "type": "integer" }
+      }
+    },
+    "性别": { "type": "string" },
+    "简批": {
+      "type": "object",
+      "required": ["核心", "性格"],
+      "properties": {
+        "核心": { "type": "string" },
+        "性格": { "type": "string" }
+      }
+    },
+    "大运骨架": {
+      "type": "object",
+      "required": ["大运", "当前年龄", "当前大运"],
+      "properties": {
+        "大运": { "type": "string" },
+        "起运": {
+          "type": "object",
+          "required": ["起运年", "起运月", "起运日", "起运公历"],
+          "properties": {
+            "起运年": { "type": "integer" },
+            "起运月": { "type": "integer" },
+            "起运日": { "type": "integer" },
+            "起运公历": { "type": "string" }
+          }
+        },
+        "当前年龄": { "type": "integer" },
+        "当前大运": {
+          "type": "object",
+          "required": ["干支", "起始年龄", "结束年龄", "起始年份", "结束年份", "十神", "主轴", "机会点", "风险点"],
+          "properties": {
+            "干支": { "type": "string" },
+            "起始年龄": { "type": "integer" },
+            "结束年龄": { "type": "integer" },
+            "起始年份": { "type": "integer" },
+            "结束年份": { "type": "integer" },
+            "十神": { "type": "string" },
+            "主轴": { "type": "string" },
+            "机会点": { "type": "array", "items": { "type": "string" } },
+            "风险点": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "说明": { "type": "string" }
+      }
+    },
+    "流年骨架": {
+      "type": "object",
+      "required": ["流年", "流年干支", "流年十神", "当前大运", "大运主轴", "年度主轴", "机会点", "风险点", "事业", "财运", "感情"],
+      "properties": {
+        "流年": { "type": "integer" },
+        "流年干支": { "type": "string" },
+        "流年十神": { "type": "string" },
+        "当前大运": { "type": "string" },
+        "大运主轴": { "type": "string" },
+        "年度主轴": { "type": "string" },
+        "机会点": { "type": "array", "items": { "type": "string" } },
+        "风险点": { "type": "array", "items": { "type": "string" } },
+        "关系提示": { "type": "array", "items": { "type": "string" } },
+        "事业": { "type": "string" },
+        "财运": { "type": "string" },
+        "感情": { "type": "string" },
+        "说明": { "type": "string" }
+      }
+    },
+    "专业分析": { "type": "object" }
+  },
+  "additionalProperties": true
+}

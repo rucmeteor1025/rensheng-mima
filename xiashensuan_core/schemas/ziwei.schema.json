@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/rucmeteor1025/rensheng-mima/schemas/ziwei.schema.json",
+  "title": "Zi Wei Dou Shu output contract",
+  "description": "Stable contract for the 紫微斗数 section of engine output. Versioned: breaking changes bump the version field; additive changes only.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["版本", "状态", "安星码", "基础信息", "重点宫位", "重点宫位解读", "十二宫", "四化", "格局", "校验"],
+  "properties": {
+    "版本": { "type": "string" },
+    "状态": { "type": "string", "enum": ["TRIAL_READY", "READY"] },
+    "安星码": { "type": "string", "pattern": "^[A-Z0-9]+$" },
+    "说明": { "type": "string" },
+    "基础信息": {
+      "type": "object",
+      "required": ["gender", "birth_date", "birth_time", "place", "anxing_code", "true_solar_time", "命宫", "身宫", "身宫所属宫位", "五行局", "局数", "命主", "身主", "子斗", "lunar_date"],
+      "properties": {
+        "gender": { "type": "string", "enum": ["男", "女"] },
+        "birth_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "birth_time": { "type": "string", "pattern": "^\\d{2}:\\d{2}$" },
+        "place": { "type": "string" },
+        "longitude": { "type": "number" },
+        "anxing_code": { "type": "string" },
+        "true_solar_time": { "type": "string" },
+        "time_correction": {
+          "type": "object",
+          "required": ["input_is_true_solar", "longitude_delta_minutes", "equation_of_time_minutes", "delta_minutes"],
+          "properties": {
+            "input_is_true_solar": { "type": "boolean" },
+            "longitude_delta_minutes": { "type": "integer" },
+            "equation_of_time_minutes": { "type": "integer" },
+            "delta_minutes": { "type": "integer" }
+          }
+        },
+        "time_branch": { "type": "string" },
+        "lunar_date": { "type": "string" },
+        "lunar_month": { "type": "integer" },
+        "lunar_day": { "type": "integer" },
+        "year_ganzhi": { "type": "string" },
+        "month_ganzhi": { "type": "string" },
+        "day_ganzhi": { "type": "string" },
+        "time_ganzhi": { "type": "string" },
+        "命局": { "type": "string" },
+        "命宫": { "type": "string" },
+        "身宫": { "type": "string" },
+        "身宫所属宫位": { "type": "string" },
+        "命宫干支": { "type": "string" },
+        "五行局": { "type": "string" },
+        "局数": { "type": "integer" },
+        "局名": { "type": "string" },
+        "命主": { "type": "string" },
+        "身主": { "type": "string" },
+        "子斗": { "type": "string" },
+        "规则来源": { "type": "object" },
+        "time_accuracy_minutes": { "type": "integer" },
+        "boundary_threshold_minutes": { "type": "integer" }
+      }
+    },
+    "重点宫位": { "type": "object" },
+    "重点宫位解读": { "type": "object" },
+    "十二宫": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["宫支", "宫位", "宫干", "宫位干支", "主星", "辅星", "四化", "身宫"],
+        "properties": {
+          "宫支": { "type": "string" },
+          "宫位": { "type": "string" },
+          "宫干": { "type": "string" },
+          "宫位干支": { "type": "string" },
+          "主星": { "type": "array", "items": { "type": "string" } },
+          "辅星": { "type": "array", "items": { "type": "string" } },
+          "神煞": { "type": "array", "items": { "type": "string" } },
+          "星曜亮度": { "type": "object" },
+          "四化": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["化", "星曜"],
+              "properties": {
+                "化": { "type": "string", "enum": ["禄", "权", "科", "忌"] },
+                "星曜": { "type": "string" }
+              }
+            }
+          },
+          "身宫": { "type": "boolean" }
+        }
+      }
+    },
+    "四化": {
+      "type": "object",
+      "required": ["禄", "权", "科", "忌"],
+      "properties": {
+        "禄": { "type": "object", "required": ["星曜", "宫支", "状态"], "properties": { "星曜": { "type": "string" }, "宫支": { "type": "string" }, "状态": { "type": "string" } } },
+        "权": { "type": "object", "required": ["星曜", "宫支", "状态"], "properties": { "星曜": { "type": "string" }, "宫支": { "type": "string" }, "状态": { "type": "string" } } },
+        "科": { "type": "object", "required": ["星曜", "宫支", "状态"], "properties": { "星曜": { "type": "string" }, "宫支": { "type": "string" }, "状态": { "type": "string" } } },
+        "忌": { "type": "object", "required": ["星曜", "宫支", "状态"], "properties": { "星曜": { "type": "string" }, "宫支": { "type": "string" }, "状态": { "type": "string" } } }
+      }
+    },
+    "格局": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "level", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "level": { "type": "string" },
+          "description": { "type": "string" },
+          "palaces": { "type": "array", "items": { "type": "string" } },
+          "conditions": { "type": "object" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "校验": { "type": "object" }
+  },
+  "additionalProperties": true
+}

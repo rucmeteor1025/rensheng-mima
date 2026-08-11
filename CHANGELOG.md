@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 - Versioned JSON Schema output contracts
+
+- Added 4 JSON Schema contracts under `xiashensuan_core/schemas/` (bazi / ziwei / fusion / web_summary), draft-07, versioned `1.0.0`
+- Added `scripts/schema_contract_tests.py` (dependency-free validator) wired into CI
+- Contracts validated against both `life` and `professional` engine outputs on synthetic samples
+- Closes #2
+
 ## 0.2.0 - Synthetic fixtures + public parser regression
 
 - Added deterministic synthetic Wenmo chart fixtures (3 cases, no real user data)

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/rucmeteor1025/rensheng-mima/schemas/web_summary.schema.json",
+  "title": "Web summary (styled output) contract",
+  "description": "Stable contract for the 风格化输出 (life/professional styled summary) section of engine output. Versioned: breaking changes bump the version field; additive changes only.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["模式", "整体判断", "性格气质", "事业与财运", "感情与婚姻", "健康与状态", "当前运势", "建议", "总结", "盘面支撑"],
+  "properties": {
+    "模式": { "type": "string" },
+    "整体判断": { "type": "string" },
+    "性格气质": { "type": "string" },
+    "事业与财运": { "type": "string" },
+    "感情与婚姻": { "type": "string" },
+    "健康与状态": { "type": "string" },
+    "当前运势": { "type": "string" },
+    "建议": {
+      "type": "object",
+      "properties": {
+        "事业": { "type": "string" },
+        "感情": { "type": "string" },
+        "状态": { "type": "string" },
+        "整体": { "type": "string" }
+      }
+    },
+    "总结": { "type": "string" },
+    "盘面支撑": { "type": "object" }
+  },
+  "additionalProperties": true
+}
